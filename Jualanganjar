@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JualanGanjar's osu! Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff66aa 0%, #ff9999 50%, #ffcc99 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -100px;
+            left: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            bottom: -50px;
+            right: -50px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 30px;
+            padding: 50px 35px;
+            box-shadow: 0 25px 70px rgba(255, 102, 170, 0.4);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        .profile-section {
+            margin-bottom: 35px;
+        }
+
+        .profile-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: white;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(255, 102, 170, 0.4);
+            animation: pulse 3s ease-in-out infinite;
+            border: 5px solid #ff66aa;
+            overflow: visible;
+            position: relative;
+        }
+
+        .osu-logo {
+            position: relative;
+            width: 70px;
+            height: 70px;
+        }
+
+        .osu-outer-ring {
+            width: 70px;
+            height: 70px;
+            border: 10px solid #ff66aa;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+        }
+
+        .osu-inner-circle {
+            width: 20px;
+            height: 20px;
+            background: #ff66aa;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -8px;
+            right: -8px;
+            box-shadow: 0 2px 8px rgba(255, 102, 170, 0.5);
+        }
+
+        h1 {
+            color: #ff66aa;
+            font-size: 30px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #ff88cc;
+            font-size: 15px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .rank-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff66aa, #ff88cc);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .link-btn {
+            background: white;
+            border: 3px solid #ff66aa;
+            padding: 20px 25px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #ff66aa;
+            font-weight: 700;
+            font-size: 17px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(255, 102, 170, 0.2);
+            animation: slideIn 0.6s ease-out backwards;
+        }
+
+        .link-btn:nth-child(1) { animation-delay: 0.1s; }
+        .link-btn:nth-child(2) { animation-delay: 0.2s; }
+        .link-btn:nth-child(3) { animation-delay: 0.3s; }
+        .link-btn:nth-child(4) { animation-delay: 0.4s; }
+
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff66aa, #ff88cc);
+            transition: all 0.5s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .link-btn:hover::before {
+            width: 500px;
+            height: 500px;
+        }
+
+        .link-btn:hover {
+            color: white;
+            border-color: #ff88cc;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(255, 102, 170, 0.4);
+        }
+
+        .link-content {
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .link-icon {
+            font-size: 28px;
+            margin-right: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .link-btn:hover .link-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .link-text {
+            font-size: 17px;
+        }
+
+        .link-arrow {
+            font-size: 22px;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .link-btn:hover .link-arrow {
+            transform: translateX(8px);
+        }
+
+        .circles-decoration {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(255, 102, 170, 0.2);
+            border-radius: 50%;
+            top: 20px;
+            right: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .circles-decoration::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 136, 204, 0.3);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .footer {
+            margin-top: 35px;
+            color: #ff88cc;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 40px 25px;
+            }
+            
+            h1 {
+                font-size: 26px;
+            }
+
+            .link-btn {
+                padding: 18px 20px;
+            }
+
+            .link-icon {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="circles-decoration"></div>
+        
+        <div class="profile-section">
+            <div class="profile-img">
+                <div class="osu-logo">
+                    <div class="osu-outer-ring"></div>
+                    <div class="osu-inner-circle"></div>
+                </div>
+            </div>
+            <h1>JualanGanjar's osu! Profile</h1>
+            <p class="subtitle">Click the circles! 🎵</p>
+            <span class="rank-badge">⭐ Active Player</span>
+        </div>
+        
+        <div class="links">
+            <a href="https://osu.ppy.sh/users/23212300" class="link-btn" target="_blank">
+                <div class="link-content">
+                    <span class="link-icon">🎹</span>
+                    <span class="link-text">Mania</span>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+            
+            <a href="https://osu.ppy.sh/users/23212300/osu" class="link-btn" target="_blank">
+                <div class="link-content">
+                    <span class="link-icon">⭕</span>
+                    <span class="link-text">Standard</span>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+            
+            <a href="https://www.mediafire.com/file/lawb5yv285n7ulf/Teto's+Dreams.osk/file" class="link-btn" target="_blank">
+                <div class="link-content">
+                    <span class="link-icon">🎨</span>
+                    <span class="link-text">Skin</span>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+            
+            <a href="https://osu.ppy.sh/scores/5009553468" class="link-btn" target="_blank">
+                <div class="link-content">
+                    <span class="link-icon">🏆</span>
+                    <span class="link-text">Highest PP</span>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+        </div>
+        
+        <div class="footer">
+            Made with ❤️ for osu! community<br>
+            Created by Lyonel
+        </div>
+    </div>
+</body>
+</html>
